@@ -13,11 +13,7 @@ foreach (string line in lines)
 */
 
 int count = 0;
-List<int> list = new List<int>();
-foreach (string item in lines)
-{
-    list.Add(int.Parse(item));
-}
+List<int> list = lines.Select(item => int.Parse(item)).ToList();
 
 for (int i = 1; i < list.Count; i++)
 {
