@@ -38,42 +38,18 @@ for (int i = 1; i < list.Count; i++)
 }
 
 Console.WriteLine($"Lösung 1: {count}");
+
 count = 0;
-int firstSum = 0;
-int secondSum = 0;
 
-for (int j = 1; j <= 3; j++)
+for (int i = 3; i < list.Count; i++)
 {
-    firstSum += list[j];
-}
-for (int i = 1; i < list.Count / 3; i++)
-{
-    for (int j = 0; j < 3; j++)
-    {
-        secondSum += list[i * 3 + j];
-        Console.WriteLine(list[i * 3 + j]);
-    }
-    
-    Console.WriteLine(firstSum);
-    Console.WriteLine(secondSum);
-    Console.WriteLine();
-    Console.WriteLine();
-    Console.WriteLine();
+    IEnumerable<int> previousSet = list.Skip(i - 3).Take(3);
+    IEnumerable<int> currentSet = list.Skip(i - 2).Take(3);
 
-    if (secondSum > firstSum)
+    if (previousSet.Sum() < currentSet.Sum())
     {
         count++;
-        Console.WriteLine("Increase");
     }
-    else
-    {
-        Console.WriteLine("Decrease");
-    }
-
-    firstSum = secondSum;
-    secondSum = 0;
-    Console.WriteLine();
-    Console.WriteLine();
 }
 
 Console.WriteLine($"Lösung 1 Teil2: {count}");
@@ -149,32 +125,3 @@ foreach (string line in lines)
 }
 
 Console.WriteLine($"Endgültige Lösung Day2 Part 2: {horizontal * depth}");
-
-Console.WriteLine();
-Console.WriteLine();
-Console.WriteLine();
-
-    for (int j = 0; j < 2; j++)
-    {
-        secondSum += list[(list.Count / 3) * 3 + j];
-        Console.WriteLine((list.Count / 3) * 3 + j);
-        Console.WriteLine(list[(list.Count / 3) * 3 + j]);
-    }
-    
-    Console.WriteLine(firstSum);
-    Console.WriteLine(secondSum);
-
-    if (secondSum > firstSum)
-    {
-        count++;
-        Console.WriteLine("Increase");
-    }
-    else
-    {
-        Console.WriteLine("Decrease");
-    }
-
-    firstSum = secondSum;
-    secondSum = 0;
-    Console.WriteLine();
-    Console.WriteLine();
