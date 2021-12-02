@@ -11,12 +11,12 @@ string text = File.ReadAllText(@"day1/day1.txt");
 
 string[] lines = text.Split(Environment.NewLine);
 
-/*
+
 foreach (string line in lines)
 {
     Console.WriteLine(line);    
 }
-*/
+
 
 int count = 0;
 List<int> list = lines.Select(item => int.Parse(item)).ToList();
@@ -38,6 +38,41 @@ for (int i = 1; i < list.Count; i++)
 }
 
 Console.WriteLine($"Lösung 1: {count}");
+count = 0;
+int firstSum = 0;
+int secondSum = 0;
+
+for (int j = 1; j <= 3; j++)
+{
+    firstSum += list[j];
+}
+for (int i = 1; i < list.Count / 3; i++)
+{
+    for (int j = 0; j < 3; j++)
+    {
+        secondSum += list[i * 3 + j];
+    }
+    
+    Console.WriteLine(firstSum);
+    Console.WriteLine(secondSum);
+
+    if (secondSum > firstSum)
+    {
+        count++;
+        Console.WriteLine("Increase");
+    }
+    else
+    {
+        Console.WriteLine("Decrease");
+    }
+
+    firstSum = secondSum;
+    secondSum = 0;
+    Console.WriteLine();
+    Console.WriteLine();
+}
+
+Console.WriteLine($"Lösung 1 Teil2: {count}");
 
 // Day 2
 Console.WriteLine();
