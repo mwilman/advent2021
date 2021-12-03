@@ -1,4 +1,6 @@
-﻿namespace advent2021.day1;
+﻿using advent2021.commons;
+
+namespace advent2021.day1;
 
 public static class Day1
 {
@@ -8,20 +10,9 @@ public static class Day1
         Console.WriteLine();
         Console.WriteLine("Day 1");
 
-        string text = File.ReadAllText(@"day1/day1.txt");
-//Console.WriteLine(text);
-
-        string[] lines = text.Split(Environment.NewLine);
-
-
-        foreach (string line in lines)
-        {
-            Console.WriteLine(line);
-        }
-
-
+        List<int> list = Commons.readFileIntoInteger(@"day1/day1.txt");
+        
         int count = 0;
-        List<int> list = lines.Select(item => int.Parse(item)).ToList();
 
         Part1(list, count);
 
