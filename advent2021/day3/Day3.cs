@@ -20,7 +20,7 @@ public static class Day3
     private static void Part1()
     {
         string[] lines = Commons.readFile("day3/day3.txt");
-        int[,] array = new int[1000,12];
+        int[,] array = new int[1000, 12];
 
         string result = "";
         for (int i = 0; i < lines.Length; i++)
@@ -33,32 +33,18 @@ public static class Day3
             {
                 char c = line[j];
                 int digit = int.Parse(c.ToString());
-                array[i,j] = digit;
-                
-                Console.WriteLine(digit);
-                switch (digit)
-                {
-                    case 0:
-                        lows++;
-                        break;
-                    case 1:
-                        high++;
-                        break;
-                }
+                array[i, j] = digit;
+            }
+        }
+
+        for (int i = 0; i < 1000; i++)
+        {
+            for (int j = 0; j < 12; j++)
+            {
+                Console.WriteLine(array[i,j]);
             }
 
             Console.WriteLine();
-            Console.WriteLine();
-            
-            if (lows > high)
-            {
-                result += "0";
-            }
-
-            if (high > lows)
-            {
-                result += "1";
-            }
         }
     }
 }
